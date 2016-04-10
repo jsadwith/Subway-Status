@@ -1,6 +1,6 @@
 /**
 
- Status.js
+ models/status.js
 
  Schema for storing train status
 
