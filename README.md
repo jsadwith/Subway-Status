@@ -12,7 +12,8 @@ Usage
 
 /api/get/{train}
 -----------------
-Get status for a given train ('n', 'q', etc.)
+Get status for a given train ('n', 'q', etc.).
+NOTE: Development still in progress
 
 `http://localhost:8080/get/{train}`
 

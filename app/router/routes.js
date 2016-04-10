@@ -9,6 +9,7 @@
 // Include router.js exports to get the router
 var router_exports = require('./router.js');
 var router = router_exports.router;
+var server = require('../../server.js');
 
 // Include status
 var Status = require('../models/status');
@@ -18,10 +19,11 @@ var Status = require('../models/status');
 // -----------------------
 
 // Root route /
+// Currently returns all subway statuses
 router.get('/', function (req, res) {
     'use strict';
 
-    res.json({message: 'Index route'});
+    res.json({status: server.subwayStatuses});
 });
 
 
