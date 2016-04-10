@@ -15,10 +15,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var router = require('./app/router/router.js');
+var router_exports = require('./app/router/router.js');
+var router = router_exports.router;
 
 // Register routes at /api
-app.use('/api', router.router);
+app.use('/api', router);
 
 // Set port
 var port = process.env.PORT || 8080;
