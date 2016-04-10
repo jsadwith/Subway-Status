@@ -1,21 +1,21 @@
 {
-  "name": "mta-status",
+  "name": "subway-status",
   "version": "1.0.0",
-  "description": "Get the latest MTA subway status for your train.",
+  "description": "Get the latest NYC subway status for your train.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsadwith/MTA-Status.git"
+    "url": "git+https://github.com/jsadwith/Subway-Status.git"
   },
   "author": "Jeremy Sadwith",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jsadwith/MTA-Status/issues"
+    "url": "https://github.com/jsadwith/Subway-Status/issues"
   },
-  "homepage": "https://github.com/jsadwith/MTA-Status#readme",
+  "homepage": "https://github.com/jsadwith/Subway-Status#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
