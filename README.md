@@ -1,2 +1,2 @@
-# MTA-Status
-Get the latest MTA subway status for your train.
+# Subway-Status
+Get the latest NYC subway status for your train.
