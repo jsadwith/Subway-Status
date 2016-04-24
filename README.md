@@ -13,13 +13,14 @@ Usage
 /api/get/{train}
 -----------------
 Get status for a given train ('n', 'q', etc.).
-NOTE: Development still in progress
 
 `http://localhost:8080/get/{train}`
 
-Response
+Response Example
 ```
 {
-  tbd
+  "line": "NQR",
+  "status": "PLANNED WORK",
+  "text": "<html>subway HTML</html>"
 }
 ```
