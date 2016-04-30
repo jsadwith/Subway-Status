@@ -7,10 +7,10 @@
 */
 
 // Import packages
-var express = module.exports.express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var serviceStatus = require('./app/libs/service-status.js');
+var express = module.exports.express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    serviceStatus = require('./app/libs/service-status.js');
 
 // Set port for server
 var port = process.env.PORT || 8080;

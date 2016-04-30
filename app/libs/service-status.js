@@ -74,7 +74,6 @@ function getByTrain(subwayLine, callback) {
     debug("Retrieving train status for line: " + subwayLine);
 
     for(var i = 0; i < server.statuses.length; i++) {
-
         var currentLine = server.statuses[i];
 
         // If we find a match from the user input, return the line here
@@ -116,8 +115,8 @@ function parseSubwayXml(res, callback) {
             line: currentLine.name,
             status: currentLine.status,
             text: currentLine.text,
-            date: currentLine.date,
-            time: currentLine.time
+            date: currentLine.Date,
+            time: currentLine.Time
         });
     });
 
