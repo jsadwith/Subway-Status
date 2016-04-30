@@ -1,0 +1,7 @@
+{
+    "username": "root",
+    "password": "root!",
+    "database": "subway_status",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+}

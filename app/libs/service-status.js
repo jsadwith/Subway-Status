@@ -11,44 +11,57 @@ var http = require('http'),
     XmlStream = require('xml-stream'),
     fs = require('fs'),
     server = require('../../server.js'),
-    Readable = require('stream').Readable || require('readable-stream');
+    Readable = require('stream').Readable || require('readable-stream'),
+    config = require('../../config');
+
 
 // PROD: Subway service XML
 var hostx = "web.mta.info",
     pathx = "/status/serviceStatus.txt";
 
-// DEV: Pull local file - comment out to use prod URL
-// TODO: Make this more legit
-var devFile = "/Users/jsadwith/Source/NodeJS/Subway-Status/assets/serviceStatus.txt";
-
 // Retrieve service status for all lines from subway service status XML
 function getServiceStatus(callback) {
     'use strict';
 
+    var stream = new Readable();
+
     // If dev file, pull contents and turn into a readable stream
-    if (devFile) {
-        debug("Subway Status URL: " + devFile);
-        var file = fs.readFileSync(devFile, {encoding: 'utf8'});
-        var stream = new Readable();
-        stream.push(file);
+    if (typeof config.subwaystatusurl !== 'undefined') {
+        var devXml = config.subwaystatusurl;
+        debug("Subway Status URL: " + devXml);
+
+        var data = fs.readFileSync(devXml, {encoding: 'utf8'});
+        stream.push(data);
         stream.push(null);
+
+        parseSubwayXml(stream, callback);
     }
     // Request service status from production
     else {
-
         debug("Subway Status URL: " + hostx + pathx);
+        var data = '';
+
         http.get({
             host: hostx,
             path: pathx
-        }).on('response', function (err, stream) {
-            // Can't pull for
-            if (err) {
-                die();
-            }
+        }, function (response) {
+            response.on('data', function (chunk) {
+                data += chunk;
+            });
+            response.on('end', function (err) {
+                if (err) {
+                    // TODO: Add error handling
+                    // console.error(err);
+                }
+                else {
+                    // TODO: Consolidate this with dev stream push
+                    stream.push(data);
+                    stream.push(null);
+                    parseSubwayXml(stream, callback);
+                }
+            });
         });
     }
-
-    parseSubwayXml(stream, callback);
 }
 
 // Make accessible in service-status.js exports
